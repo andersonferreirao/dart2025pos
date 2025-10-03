@@ -1,0 +1,966 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0046)file://labbpcprof/Compartilhar/Dart_aula1.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>‎</title>
+<meta name="generator" content="Org Mode">
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org8977bed">1. Hello</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orgfa7c5b5">2. Variáveis</a>
+<ul>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org4a50955">2.1. Documentação</a></li>
+</ul>
+</li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orgcc4733c">3. Prática</a>
+<ul>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org586704b">3.1. Solução</a></li>
+</ul>
+</li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orge2fe711">4. Inteiros</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org5c55998">5. Prática</a>
+<ul>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org3dd7a25">5.1. Solução</a></li>
+</ul>
+</li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org1795af6">6. Reais</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org3cf92cf">7. Prática</a>
+<ul>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orgf767eda">7.1. Solução</a></li>
+</ul>
+</li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orgf638536">8. Exercício</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org981bf6f">9. Coleções</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org8d97e4a">10. Prática</a>
+<ul>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org77cd702">10.1. Solução</a></li>
+</ul>
+</li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orge278bc1">11. Fluxo de controle</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orga6bec8b">12. Prática</a>
+<ul>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orgf633a19">12.1. Solução</a></li>
+</ul>
+</li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org29de57f">13. Exercício</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org8406baf">14. For</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orgd8fdbbc">15. Prática</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org32cbc3b">16. Exercício</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org8a11750">17. For com Iterables</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#orga6deb31">18. Prática</a></li>
+<li><a href="file://labbpcprof/Compartilhar/Dart_aula1.html#org7dcb8f6">19. Envio</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8977bed" class="outline-2">
+<h2 id="org8977bed"><span class="section-number-2">1.</span> Hello</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Aqui está um programa simples em Dart:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  print('Hello, World!');
+}  
+</pre>
+</div>
+
+<p>
+Todo programa em Dart começa a execução pela função <code>main()</code>.
+</p>
+
+<p>
+Como existe uma chamada à função <a href="https://api.dart.dev/dart-core/print.html">print()</a> ela é executada.
+</p>
+
+<p>
+A função <code>print()</code> imprime um objeto.
+</p>
+
+<p>
+Para testar você pode acessar:
+<a href="https://dartpad.dev/?id=49cf09db06d2e98ff40ddcb37e2ea952">https://dartpad.dev/?id=49cf09db06d2e98ff40ddcb37e2ea952</a>
+</p>
+
+<p>
+e apertar o botão <b>&gt; RUN</b>
+</p>
+
+<iframe width="100%" height="500px" src="./dart_files/saved_resource.html"></iframe>
+</div>
+</div>
+
+<div id="outline-container-orgfa7c5b5" class="outline-2">
+<h2 id="orgfa7c5b5"><span class="section-number-2">2.</span> Variáveis</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Podemos declarar uma variável usando <code>var</code> o tipo será determinado de acordo com o valor inicial.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  var mensagem = 'Olá, mundo!';
+  print(mensagem);
+  print(mensagem.runtimeType);
+}      
+</pre>
+</div>
+
+<p>
+A propriedade <code>runtimeType</code> é uma representação do tipo do objeto.
+</p>
+
+<iframe width="100%" height="500px" src="./dart_files/saved_resource(1).html"></iframe>
+
+<p>
+Aqui vemos que <code>runtimeType</code> é uma propriedade que pertence ao objeto <b>mensagem</b>. Objetos possuem propriedades e métodos. As propriedades determinam o <i>estado atual</i> do objeto e os métodos determinam <i>ações</i> que o objeto pode realizar.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  var mensagem = 'Olá, mundo!';
+  print(mensagem);
+  print(mensagem.runtimeType);
+}      
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4a50955" class="outline-3">
+<h3 id="org4a50955"><span class="section-number-3">2.1.</span> Documentação</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Acesse a documentação em: <a href="https://api.dart.dev/">https://api.dart.dev/</a>
+</p>
+
+<p>
+Em seguida acesse a documentação de <a href="https://api.dart.dev/dart-core/">dart:core</a>.
+</p>
+
+<p>
+Procure no canto direito pela classe <b>String</b>.
+</p>
+
+<p>
+Agora procure pela propriedade <b>runtimeType</b>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcc4733c" class="outline-2">
+<h2 id="orgcc4733c"><span class="section-number-2">3.</span> Prática</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+A. No <a href="https://dartpad.dev/?id=0b6fc6c44176568ba24520e239223fca?theme=dark">código anterior</a>, use um método da variável <code>mensagem</code> para imprimir 'Olá, mundo!' com letras maiúsculas (UPPER CASE).
+</p>
+</div>
+
+<div id="outline-container-org586704b" class="outline-3">
+<h3 id="org586704b"><span class="section-number-3">3.1.</span> Solução</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  var mensagem = 'Olá, mundo!';
+  print(mensagem);
+  print(mensagem.runtimeType);
+  print(mensagem.toUpperCase());
+}      
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge2fe711" class="outline-2">
+<h2 id="orge2fe711"><span class="section-number-2">4.</span> Inteiros</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Além de Strings, temos outros tipos, o <a href="https://api.dart.dev/dart-core/int-class.html">int</a> armazena um número inteiro.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  var ano = 2025;
+  print('Ano: ');
+  print(ano);     // teste runtimeType
+}
+</pre>
+</div>
+
+<p>
+Podemos usar valores de variáveis dentro de Strings usando <code>$</code> antes do nome da variável:
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  var ano = 2025;
+  print('Ano: $ano');
+}
+</pre>
+</div>
+
+<iframe width="100%" height="500px" src="./dart_files/saved_resource(2).html"></iframe>
+
+<p>
+Podemos indicar o tipo <code>int</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  int ano = 2025;
+  print('Ano: $ano');
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c55998" class="outline-2">
+<h2 id="org5c55998"><span class="section-number-2">5.</span> Prática</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+B. Altere e corrija o programa abaixo para mostrar a sua idade.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  int ano = 2025;
+  // int nascimento = 1981;
+  // int idade = ???
+  print('Idade: $ano');
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3dd7a25" class="outline-3">
+<h3 id="org3dd7a25"><span class="section-number-3">5.1.</span> Solução</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  int ano = 2025;
+  int nascimento = 2003;
+  int idade = ano - nascimento;
+  print('Idade: $idade');
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1795af6" class="outline-2">
+<h2 id="org1795af6"><span class="section-number-2">6.</span> Reais</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Variáveis que armazenam números reais possuem o tipo <a href="https://api.dart.dev/dart-core/double-class.html">double</a>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  int raio = 6;
+  double circ = 2 * raio * 3.14;
+
+  print('Circunferência: $circ');
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3cf92cf" class="outline-2">
+<h2 id="org3cf92cf"><span class="section-number-2">7.</span> Prática</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+C. Procure na biblioteca <a href="https://dart.dev/libraries/dart-math">dart:math</a> por um valor mais preciso para usar no lugar de <code>3.14</code> do código anterior.
+</p>
+</div>
+
+<div id="outline-container-orgf767eda" class="outline-3">
+<h3 id="orgf767eda"><span class="section-number-3">7.1.</span> Solução</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+<pre class="src src-dart">import 'dart:math';
+
+void main() {
+  int raio = 6;
+  double circ = 2 * raio * pi;
+
+  print('Circunferência: $circ');
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf638536" class="outline-2">
+<h2 id="orgf638536"><span class="section-number-2">8.</span> Exercício</h2>
+<div class="outline-text-2" id="text-8">
+<ol class="org-ol">
+<li>Crie um programa em Dart que calcula e imprime a área de um círculo cujo raio é 5.75 cm.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org981bf6f" class="outline-2">
+<h2 id="org981bf6f"><span class="section-number-2">9.</span> Coleções</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+O tipo <code>List</code> em Dart armazena vários elementos:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  var planetas = ['Mercúrio', 'Vênus', 'Terra', 'Marte'];
+
+  print(planetas[0]);
+  print(planetas.runtimeType);
+}
+</pre>
+</div>
+
+<svg width="600" height="450" viewBox="0 0 600 450">
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        svg {
+            border: 2px solid #cbd5e1; /* Light gray border */
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .memory-block {
+            fill: #e0f2fe; /* Light blue */
+            stroke: #38b2ac; /* Teal border */
+            stroke-width: 2;
+            rx: 8; /* Rounded corners */
+            ry: 8;
+        }
+        .variable-block {
+            fill: #c7d2fe; /* Light indigo */
+            stroke: #4c51bf; /* Indigo border */
+            stroke-width: 2;
+            rx: 8;
+            ry: 8;
+        }
+        .string-block {
+            fill: #fefcbf; /* Light yellow */
+            stroke: #d69e2e; /* Orange border */
+            stroke-width: 2;
+            rx: 8;
+            ry: 8;
+        }
+        .arrow {
+            stroke: #4a5568; /* Dark gray */
+            stroke-width: 2;
+            marker-end: url(#arrowhead);
+        }
+        text {
+            font-size: 14px;
+            fill: #2d3748; /* Dark text */
+            font-weight: 500;
+        }
+        .label {
+            font-size: 16px;
+            font-weight: bold;
+            fill: #1a202c; /* Even darker text for labels */
+        }
+        .address {
+            font-size: 12px;
+            fill: #718096; /* Gray text for addresses */
+        }
+    </style>
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#4a5568"></polygon>
+            </marker>
+        </defs>
+
+        <!-- Título -->
+        <text x="300" y="30" text-anchor="middle" class="label">Ilustração de Memória Dart: List planetas</text>
+
+        <!-- Variável 'planetas' na Stack (ou área de referência) -->
+        <rect x="50" y="80" width="120" height="60" class="variable-block"></rect>
+        <text x="110" y="105" text-anchor="middle">planetas</text>
+        <text x="110" y="125" text-anchor="middle" class="address">@0x100</text> <!-- Endereço fictício da referência -->
+
+        <!-- Seta da variável 'planetas' para o objeto List -->
+        <line x1="170" y1="110" x2="250" y2="110" class="arrow"></line>
+
+        <!-- Objeto List na Heap -->
+        <rect x="250" y="80" width="300" height="180" class="memory-block"></rect>
+        <text x="400" y="95" text-anchor="middle" class="label">Objeto List (Heap)</text>
+        <text x="400" y="115" text-anchor="middle" class="address">@0x200</text> <!-- Endereço fictício do objeto List -->
+
+        <!-- Elementos da List (referências para Strings) -->
+        <rect x="260" y="130" width="80" height="40" class="memory-block" fill="#f0f9ff" stroke="#63b3ed"></rect>
+        <text x="300" y="155" text-anchor="middle" class="address">@0x300</text> <!-- Ref a Mercúrio -->
+        <line x1="340" y1="150" x2="400" y2="290" class="arrow"></line>
+
+        <rect x="260" y="175" width="80" height="40" class="memory-block" fill="#f0f9ff" stroke="#63b3ed"></rect>
+        <text x="300" y="200" text-anchor="middle" class="address">@0x310</text> <!-- Ref a Vênus -->
+        <line x1="340" y1="195" x2="400" y2="330" class="arrow"></line>
+
+        <rect x="260" y="220" width="80" height="40" class="memory-block" fill="#f0f9ff" stroke="#63b3ed"></rect>
+        <text x="300" y="245" text-anchor="middle" class="address">@0x320</text> <!-- Ref a Terra -->
+        <line x1="340" y1="240" x2="400" y2="370" class="arrow"></line>
+
+        <rect x="260" y="265" width="80" height="40" class="memory-block" fill="#f0f9ff" stroke="#63b3ed"></rect>
+        <text x="300" y="290" text-anchor="middle" class="address">@0x330</text> <!-- Ref a Marte -->
+        <line x1="340" y1="285" x2="400" y2="410" class="arrow"></line>
+
+        <!-- Objetos String na Heap -->
+        <rect x="400" y="270" width="150" height="40" class="string-block"></rect>
+        <text x="475" y="295" text-anchor="middle">"Mercúrio"</text>
+        <text x="475" y="280" text-anchor="middle" class="address">@0x300</text>
+
+        <rect x="400" y="310" width="150" height="40" class="string-block"></rect>
+        <text x="475" y="335" text-anchor="middle">"Vênus"</text>
+        <text x="475" y="320" text-anchor="middle" class="address">@0x310</text>
+
+        <rect x="400" y="350" width="150" height="40" class="string-block"></rect>
+        <text x="475" y="375" text-anchor="middle">"Terra"</text>
+        <text x="475" y="360" text-anchor="middle" class="address">@0x320</text>
+
+        <rect x="400" y="390" width="150" height="40" class="string-block"></rect>
+        <text x="475" y="415" text-anchor="middle">"Marte"</text>
+        <text x="475" y="400" text-anchor="middle" class="address">@0x330</text>
+
+    </svg>
+
+<p>
+Outra maneira de criar a lista é especificando seu tipo:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  List&lt;String&gt; planetas = ['Mercúrio', 'Vênus', 'Terra', 'Marte'];
+
+  print(planetas[0]);
+  print(planetas.runtimeType);
+}
+</pre>
+</div>
+
+<p>
+O número de objetos na lista fica na propriedade length:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  List&lt;String&gt; planetas = ['Mercúrio', 'Vênus', 'Terra', 'Marte'];
+
+  print(planetas.length);
+}
+</pre>
+</div>
+
+<p>
+Não podemos ajustar um item além da quantidade (<code>length</code>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  List&lt;String&gt; planetas = ['Mercúrio', 'Vênus', 'Terra', 'Marte'];
+
+  print(planetas.length);
+
+  planetas[5] = 'Júpiter';
+}
+</pre>
+</div>
+
+<p>
+A lista pode receber mais itens usando os métodos <code>add</code> e <code>addAll</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  List&lt;String&gt; planetas = ['Mercúrio', 'Vênus', 'Terra', 'Marte'];
+
+  planetas.add('Júpiter');
+
+  print(planetas);
+  print(planetas.length);
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  List&lt;String&gt; planetas = ['Mercúrio', 'Vênus', 'Terra', 'Marte'];
+
+  planetas.add('Júpiter');    
+  planetas.addAll(['Saturno', 'Urano', 'Netuno']);
+
+  print(planetas);
+  print(planetas.length);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8d97e4a" class="outline-2">
+<h2 id="org8d97e4a"><span class="section-number-2">10.</span> Prática</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+D. Crie um programa Dart que guarda a lista de 3 filmes do ano que você nasceu e mostre os filmes um por um.
+</p>
+</div>
+
+<div id="outline-container-org77cd702" class="outline-3">
+<h3 id="org77cd702"><span class="section-number-3">10.1.</span> Solução</h3>
+<div class="outline-text-3" id="text-10-1">
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  // Lista de 3 filmes do ano 2001
+  List&lt;String&gt; filmes = [
+    'Senhor dos anéis.',
+    'Shrek',
+    'Harry Potter.',
+  ];
+
+  print('Filmes do ano 2001:');
+  print(filmes[0]);
+  print(filmes[1]);
+  print(filmes[2]);
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge278bc1" class="outline-2">
+<h2 id="orge278bc1"><span class="section-number-2">11.</span> Fluxo de controle</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+O comando <code>if</code> decide se vai ou não executar um bloco de códigos.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">if (ano &gt;= 2001) {
+  print('Século 21');
+}
+</pre>
+</div>
+
+
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo -->
+  <rect width="500" height="400" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"></rect>
+  
+  <!-- Início -->
+  <ellipse cx="250" cy="50" rx="30" ry="20" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"></ellipse>
+  <text x="250" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1976d2">INÍCIO</text>
+  <!-- Início -> Atribuição -->
+  <line x1="250" y1="70" x2="250" y2="80" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"></line>
+  
+  
+  <!-- Atribuição ano = 1998 -->
+  <rect x="210" y="100" width="80" height="40" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="5"></rect>
+  <text x="250" y="125" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#e65100">ano = 1998</text>
+
+  <!-- Atribuição -> Decisão -->
+  <line x1="250" y1="140" x2="250" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+  
+  <!-- Decisão: ano >= 2001? -->
+  <polygon points="250,170 310,200 250,230 190,200" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2"></polygon>
+  <text x="250" y="205" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#7b1fa2">ano &gt;= 2001?</text>
+
+  <!-- Decisão -> Sim -->
+  <line x1="310" y1="200" x2="350" y2="230" stroke="#f44336" stroke-width="2" marker-end="url(#arrowhead)"></line>
+  <text x="345" y="220" font-family="Arial, sans-serif" font-size="10" fill="#2e7d32">SIM</text>
+  
+  <!-- Sim -> Fim -->
+  <line x1="370" y1="290" x2="300" y2="330" stroke="#f44336" stroke-width="2" marker-end="url(#arrowhead)"></line>
+  
+  <!-- Sim: Print 'Século 21' -->
+  <rect x="310" y="240" width="120" height="50" fill="#ffcdd2" stroke="#f44336" stroke-width="2" rx="5"></rect>
+  <text x="370" y="270" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#2e7d32">print('Século 21')</text>
+
+  <!-- Decisão -> Não (direto para Fim) -->
+  <line x1="250" y1="230" x2="250" y2="300" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowhead)"></line>
+  <text x="230" y="255" font-family="Arial, sans-serif" font-size="10" fill="#d32f2f" text-anchor="middle">NÃO</text>  
+
+  
+  <!-- Fim -->
+  <ellipse cx="250" cy="340" rx="30" ry="20" fill="#e8f5e8" stroke="#4caf50" stroke-width="2"></ellipse>
+  <text x="250" y="345" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#d32f2f">FIM</text>
+  
+  <!-- Setas -->
+  
+  
+  
+  
+  
+  
+  <!-- Definição da seta -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"></polygon>
+    </marker>
+  </defs>
+</svg>
+
+<p>
+Um if/else executa um ou outro bloco de códigos:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">if (ano &gt;= 2001) {
+  print('Século 21');
+} else {
+  print('Antes');
+}
+</pre>
+</div>
+
+<p>
+É possível ter um if em um else:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">if (ano &gt;= 2001) {
+  print('Século 21');
+} else if (ano &gt;= 1901) {
+  print('Século 20');  
+} else {
+  print('Antiguidade');
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga6bec8b" class="outline-2">
+<h2 id="orga6bec8b"><span class="section-number-2">12.</span> Prática</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+E. Altere o programa em Dart para mostrar se o mês atual é maior, menor ou igual ao mês informado, use <code>if/else</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  // int informado = ?
+  int atual = 10;
+
+  print('$atual é maior que $informado');
+}  
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf633a19" class="outline-3">
+<h3 id="orgf633a19"><span class="section-number-3">12.1.</span> Solução</h3>
+<div class="outline-text-3" id="text-12-1">
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  int informado = 7;
+  int atual = 10;
+
+  if (atual &gt; informado) {
+    print('$atual é maior que $informado');
+  } else if (atual &lt; informado) {
+    print('$atual é maior que $informado');
+  } else {
+    print('valores iguais: $atual');
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org29de57f" class="outline-2">
+<h2 id="org29de57f"><span class="section-number-2">13.</span> Exercício</h2>
+<div class="outline-text-2" id="text-13">
+<ol class="org-ol">
+<li value="2">Encontre na biblioteca <code>dart:core</code> a classe <code>DateTime</code>, veja como fazer para obter o número do mês atual. Altere o programa da prática E para usar o valor do mês atual na variável <b>atual</b>.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org8406baf" class="outline-2">
+<h2 id="org8406baf"><span class="section-number-2">14.</span> For</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+O comando <code>for</code> repete um bloco de comandos:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">void main() {
+  int x = 5;
+
+  for(var i = 0; i &lt; x; i++) {
+    print(i);
+  }
+}  
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8fdbbc" class="outline-2">
+<h2 id="orgd8fdbbc"><span class="section-number-2">15.</span> Prática</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+G. Altere o programa da prática D para exibir os filmes usando for.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org32cbc3b" class="outline-2">
+<h2 id="org32cbc3b"><span class="section-number-2">16.</span> Exercício</h2>
+<div class="outline-text-2" id="text-16">
+<ol class="org-ol">
+<li value="3">Usando <code>for</code> e <code>DateTime</code> crie um programa em Dart que mostra o calendário do mês atual, mostrando 7 dias em cada linha e indo até o dia de hoje apenas. A primeira linha deve ser: | D | S | T | Q | Q | S | S |</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org8a11750" class="outline-2">
+<h2 id="org8a11750"><span class="section-number-2">17.</span> For com Iterables</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+Podemos percorrer uma coleção usando for:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-dart">for(var planeta in planetas) {
+  print(planeta);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga6deb31" class="outline-2">
+<h2 id="orga6deb31"><span class="section-number-2">18.</span> Prática</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+H. Crie um programa em Dart que mostra todos os alunos da turma. Os alunos devem estar na List alunos. Use for para percorrer todos os elementos sem controlar o fim da List.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7dcb8f6" class="outline-2">
+<h2 id="org7dcb8f6"><span class="section-number-2">19.</span> Envio</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+Coloque o código dos exercícios com os nomes: ex1.dart, ex2.dart e ex3.dart em um repositório chamado dart2025pos1 no seu GitHub.
+</p>
+
+<p>
+<a href="https://forms.gle/UqiiKDihfZGPd73F7">https://forms.gle/UqiiKDihfZGPd73F7</a>
+</p>
+</div>
+</div>
+</div>
+
+
+</body></html>
