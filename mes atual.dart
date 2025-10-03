@@ -1,6 +1,8 @@
 void main() {
   // int informado = ?
-  int mesAtual = 11;
+  final now = DateTime.now();
+
+  int mesAtual = now.month;
   int mesInformado = 11;
   if (mesAtual > mesInformado)
     print('é maior que o mês informado $mesInformado');
