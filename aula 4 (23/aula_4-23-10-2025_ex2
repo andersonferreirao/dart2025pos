@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void main() {
+  runApp(MainApp());
+}
+
+class MainApp extends StatefulWidget {
+  MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  TextEditingController controlador = TextEditingController();
+
+  String texto = 'Hello';
+
+  dolar(type) async {
+    var cotacao = "";
+    var response = await http.get(
+      Uri.parse('https://economia.awesomeapi.com.br/last/USD-BRL'),
+    );
+    var resultado = jsonDecode(response.body);
+    //print(resultado.runtimeType);
+    if (type == "menor") {
+      cotacao = 'Menor Cotação: ${resultado['USDBRL']['low']}';
+    }
+    if (type == "maior") {
+      cotacao = 'Maior Cotação: ${resultado['USDBRL']['high']}';
+    }
+    setState(() {
+      texto = '$cotacao';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          dolar(dolar("menor"));
+                        });
+                      },
+                      child: Text('menor cotação do dolar')),
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          ;
+                          dolar(dolar("maior"));
+                        });
+                      },
+                      child: Text('Maior cotação do dolar'))
+                ],
+              ),
+              Text(texto),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
