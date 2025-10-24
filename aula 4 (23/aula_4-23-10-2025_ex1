@@ -1,0 +1,86 @@
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void main() {
+  runApp(MainApp());
+}
+
+class MainApp extends StatefulWidget {
+  MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  TextEditingController controlador = TextEditingController();
+
+  String texto = 'Hello';
+
+  var count = 1;
+
+  adiciona() {
+    count++;
+    return count;
+  }
+
+  diminui() {
+    if (count > 1) count--;
+    return count;
+  }
+
+  buscaTitulo(int id) async {
+    var id_number = id.toString();
+    var response = await http.get(
+      Uri.parse('https://jsonplaceholder.typicode.com/albums/$id_number'),
+    );
+    var resultado = jsonDecode(response.body);
+    //print(resultado.runtimeType);
+    setState(() {
+      texto = 'Título: ${resultado['title']}';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              TextField(
+                controller: controlador,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'ID',
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          buscaTitulo(diminui());
+                        });
+                      },
+                      child: Text('diminuir')),
+                  ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          ;
+                          buscaTitulo(adiciona());
+                        });
+                      },
+                      child: Text('Avançar'))
+                ],
+              ),
+              Text(texto),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
